@@ -1,20 +1,72 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { 
   ArrowRight, Check, Code, Zap, Gauge, Lock, Rocket, Users, 
   Search, ShieldCheck, Headphones, BarChart, Cpu, Globe, Layout,
-  Lightbulb, Target, Award
+  Lightbulb, Target, Award, Gem, Star, Handshake, TrendingUp
 } from "lucide-react";
+import { useRef } from "react";
 
 /**
- * Design Philosophy: Ultra-Premium Agency (Stripe/Apple style)
+ * Design Philosophy: Ultra-Premium Agency (Stripe/Apple/Linear style)
  * Refonte Premium : Service & Entreprise au Centre
- * - Headlines clairs et directs (< 5 secondes de compréhension)
- * - Section "Qui sommes-nous ?" pour établir la crédibilité
- * - Mise en avant de la méthode et de la différenciation
- * - Wording orienté bénéfices clients et résultats
- * - Humanisation et transparence renforcées
+ * - Animations d'entrée (scroll-based, reveal, stagger)
+ * - Micro-interactions (hover, clic, transitions)
+ * - Animations de texte modernes (split text, fade, slide, blur)
+ * - Transitions fluides entre sections
+ * - Effets premium (parallax léger, depth, easing naturel)
+ * - Structure et layout ultra optimisés (Bento Grid, sections immersives)
+ * - Identité visuelle et branding haut de gamme
+ * - Optimisation mobile
  */
+
+// Custom Animated Text Component
+const AnimatedText = ({ text, el: Wrapper = "p", className, variants, stagger = 0.05 }) => {
+  const words = text.split(" ");
+  return (
+    <Wrapper className={className}>
+      <motion.span variants={variants} initial="hidden" animate="visible" className="inline-block">
+        {words.map((word, i) => (
+          <motion.span key={i} variants={{ hidden: { opacity: 0, y: 20, filter: "blur(8px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { delay: i * stagger, duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="inline-block mr-2">
+            {word}
+          </motion.span>
+        ))}
+      </motion.span>
+    </Wrapper>
+  );
+};
+
+// Magnetic Button Component
+const MagneticButton = ({ children, className, ...props }) => {
+  const ref = useRef(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const { width, height, left, top } = ref.current.getBoundingClientRect();
+    const x = clientX - (left + width / 2);
+    const y = clientY - (top + height / 2);
+    setPosition({ x: x * 0.15, y: y * 0.15 }); // Adjust sensitivity
+  };
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  return (
+    <motion.button
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      className={className}
+      {...props}
+    >
+      {children}
+    </motion.button>
+  );
+};
 
 export default function Home() {
   const containerVariants = {
@@ -200,8 +252,16 @@ export default function Home() {
     },
   ];
 
+  const scrollRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-primary/10 selection:text-primary">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-primary/10 selection:text-primary overflow-x-hidden">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-100">
         <div className="container flex items-center justify-between h-20">
@@ -219,21 +279,16 @@ export default function Home() {
             <a href="#methode" className="hover:text-primary transition-all">Méthode</a>
             <a href="#offres" className="hover:text-primary transition-all">Offres</a>
           </div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-          >
-            <Button className="bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full px-8 font-bold">
-              Audit Gratuit
-            </Button>
-          </motion.div>
+          <MagneticButton className="bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full px-8 font-bold">
+            Audit Gratuit
+          </MagneticButton>
         </div>
       </nav>
 
-      {/* Hero Section - Refonte Premium */}
+      {/* Hero Section - Ultra Premium */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-slate-50 to-white">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
+        <div className="absolute inset-0" ref={scrollRef}>
+          <motion.div style={{ y }} className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
         </div>
 
         <div className="container relative z-10">
@@ -252,32 +307,30 @@ export default function Home() {
                 Votre partenaire en excellence digitale
               </motion.div>
               
-              <motion.h1
-                variants={itemVariants}
+              <AnimatedText
+                el="h1"
+                text="Propulsez votre entreprise : Des écosystèmes digitaux conçus pour la croissance."
                 className="text-6xl lg:text-8xl font-black leading-[1] tracking-tight text-slate-900"
-              >
-                Propulsez votre <br />
-                <span className="text-primary">entreprise</span>
-              </motion.h1>
+              />
 
-              <motion.p
-                variants={itemVariants}
+              <AnimatedText
+                el="p"
+                text="Lumina Nexus transforme votre vision en une réalité digitale performante. Nous créons des sites web, applications et plateformes sur mesure qui captivent vos clients et génèrent des résultats concrets pour les PME et startups exigeantes."
                 className="text-xl text-slate-500 max-w-xl leading-relaxed"
-              >
-                Lumina Nexus conçoit des écosystèmes digitaux sur mesure qui transforment votre vision technique en levier de croissance concret. Nous bâtissons des solutions web haute performance pour les PME et startups exigeantes.
-              </motion.p>
+                stagger={0.02}
+              />
 
               <motion.div
                 variants={itemVariants}
                 className="flex flex-wrap gap-5"
               >
-                <Button
+                <MagneticButton
                   size="lg"
                   className="bg-primary text-white hover:bg-primary/90 shadow-2xl shadow-primary/30 rounded-full px-10 h-16 text-lg font-bold"
                 >
                   Obtenez votre audit gratuit
                   <ArrowRight className="ml-2 w-6 h-6" />
-                </Button>
+                </MagneticButton>
                 <div className="flex flex-col justify-center">
                   <span className="text-sm font-bold text-slate-900">Réponse sous 24h</span>
                   <span className="text-xs text-slate-400">Diagnostic complet inclus</span>
@@ -342,10 +395,17 @@ export default function Home() {
         <div className="container">
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
             {techStack.map((tech, i) => (
-              <div key={i} className="flex items-center gap-3">
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ delay: i * 0.05 }}
+                className="flex items-center gap-3"
+              >
                 <tech.icon className="w-6 h-6" />
                 <span className="font-bold tracking-tighter text-xl">{tech.name}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -362,28 +422,33 @@ export default function Home() {
               className="space-y-10"
             >
               <div>
-                <h2 className="text-5xl lg:text-6xl font-black mb-8 tracking-tight">
-                  L'expertise humaine <br />
-                  <span className="text-primary">derrière votre succès</span>
-                </h2>
-                <p className="text-xl text-slate-500 leading-relaxed">
-                  Chez Lumina Nexus, nous sommes une équipe d'experts passionnés par la création de solutions web qui propulsent la croissance de votre entreprise. Nous croyons que la technologie doit servir une vision claire et générer des résultats concrets.
-                </p>
+                <AnimatedText
+                  el="h2"
+                  text="L'expertise humaine derrière votre succès digital."
+                  className="text-5xl lg:text-6xl font-black mb-8 tracking-tight"
+                  stagger={0.03}
+                />
+                <AnimatedText
+                  el="p"
+                  text="Chez Lumina Nexus, nous sommes une équipe d'experts passionnés par la création de solutions web qui propulsent la croissance de votre entreprise. Nous croyons que la technologie doit servir une vision claire et générer des résultats concrets."
+                  className="text-xl text-slate-500 leading-relaxed"
+                  stagger={0.01}
+                />
               </div>
 
               <div className="space-y-8">
-                <div>
+                <motion.div variants={itemVariants}>
                   <h3 className="text-2xl font-black text-slate-900 mb-3">Notre Mission</h3>
                   <p className="text-slate-500 leading-relaxed">
                     Démocratiser l'excellence technique et le design émotionnel pour les entreprises qui aspirent à une présence digitale impactante et durable.
                   </p>
-                </div>
-                <div>
+                </motion.div>
+                <motion.div variants={itemVariants}>
                   <h3 className="text-2xl font-black text-slate-900 mb-3">Notre Vision</h3>
                   <p className="text-slate-500 leading-relaxed">
                     Devenir le partenaire de croissance digital de référence pour les PME et startups, reconnu pour notre approche personnalisée et notre capacité à générer un retour sur investissement mesurable.
                   </p>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
 
@@ -394,53 +459,57 @@ export default function Home() {
               className="grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
               {[
-                { label: "Années d'Expérience", value: "10+" },
-                { label: "Projets Réussis", value: "150+" },
-                { label: "Clients Satisfaits", value: "100%" },
-                { label: "Score Lighthouse", value: "90+" },
+                { label: "Années d'Expérience", value: "10+", icon: Star },
+                { label: "Projets Réussis", value: "150+", icon: TrendingUp },
+                { label: "Clients Satisfaits", value: "100%", icon: Handshake },
+                { label: "Score Lighthouse", value: "90+", icon: Gauge },
               ].map((stat, i) => (
-                <div key={i} className="p-8 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ delay: i * 0.1 }}
+                  className="p-8 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col items-start"
+                >
+                  <stat.icon className="w-8 h-8 text-primary mb-4" />
                   <div className="text-4xl font-black text-primary mb-2">{stat.value}</div>
                   <div className="text-sm font-bold text-slate-500 uppercase tracking-wider">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services Section - Reformulé */}
+      {/* Services Section - Reformulé et Animé (Bento Grid Style) */}
       <section id="services" className="py-32 bg-white">
         <div className="container">
           <div className="max-w-3xl mb-24">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <AnimatedText
+              el="h2"
+              text="Nos Solutions : Votre succès, notre expertise."
               className="text-5xl lg:text-6xl font-black mb-8 tracking-tight"
-            >
-              Nos Solutions <br />
-              <span className="text-primary">pour votre croissance</span>
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              stagger={0.03}
+            />
+            <AnimatedText
+              el="p"
+              text="Chaque entreprise est unique. Lumina Nexus propose une gamme de solutions sur mesure, conçues pour répondre précisément à vos besoins et vous garantir un avantage concurrentiel durable."
               className="text-xl text-slate-500 leading-relaxed"
-            >
-              Chaque entreprise est unique. Lumina Nexus propose une gamme de solutions sur mesure, conçues pour répondre précisément à vos besoins et vous garantir un avantage concurrentiel durable.
-            </motion.p>
+              stagger={0.01}
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:border-primary/20 hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col"
+                initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+                whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:border-primary/20 hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col cursor-pointer"
+                whileHover={{ y: -5, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 10 } }}
               >
                 <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
                   <service.icon className="w-8 h-8 text-slate-900 group-hover:text-white" />
@@ -463,38 +532,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Method Section - Nouvelle Section */}
+      {/* Method Section - Nouvelle Section Interactive */}
       <section id="methode" className="py-32 bg-slate-50">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-24">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <AnimatedText
+              el="h2"
+              text="Notre Approche : La Nexus Strategy pour des résultats concrets."
               className="text-5xl lg:text-6xl font-black mb-8 tracking-tight"
-            >
-              Notre Approche <br />
-              <span className="text-primary">Nexus Strategy</span>
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              stagger={0.03}
+            />
+            <AnimatedText
+              el="p"
+              text="Une méthode éprouvée en 4 étapes pour transformer votre vision en réalité digitale performante et durable."
               className="text-xl text-slate-500 leading-relaxed"
-            >
-              Une méthode éprouvée en 4 étapes pour transformer votre vision en réalité digitale performante et durable.
-            </motion.p>
+              stagger={0.01}
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {methodSteps.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:shadow-lg transition-all"
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ delay: index * 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className="relative p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:shadow-lg transition-all flex flex-col items-start"
               >
                 <div className="text-6xl font-black text-primary/10 mb-4">{step.number}</div>
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 absolute top-8 right-8">
@@ -513,17 +577,19 @@ export default function Home() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
             <div>
-              <h2 className="text-5xl font-black mb-12 tracking-tight">
-                Pourquoi nous <br />
-                <span className="text-primary">confier votre vision</span>
-              </h2>
+              <AnimatedText
+                el="h2"
+                text="Pourquoi nous confier votre vision ?"
+                className="text-5xl font-black mb-12 tracking-tight"
+                stagger={0.03}
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
                 {whyUs.map((item, index) => (
                   <motion.div 
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.5 }}
                     transition={{ delay: index * 0.1 }}
                     className="space-y-5"
                   >
@@ -536,7 +602,13 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative"
+            >
               <div className="aspect-square rounded-[3rem] bg-slate-50 overflow-hidden border border-slate-100 flex items-center justify-center p-10">
                 <div className="w-full h-full bg-white rounded-[2rem] shadow-2xl p-12 flex flex-col justify-between border border-slate-50">
                   <div className="space-y-6">
@@ -554,7 +626,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -563,19 +635,30 @@ export default function Home() {
       <section id="offres" className="py-32 bg-slate-50">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-24">
-            <h2 className="text-5xl font-black mb-8 tracking-tight">Investissez dans votre <span className="text-primary">succès digital</span></h2>
-            <p className="text-xl text-slate-500">Des offres transparentes conçues pour un retour sur investissement maximal, adaptées à tous les stades de croissance.</p>
+            <AnimatedText
+              el="h2"
+              text="Investissez dans votre succès digital."
+              className="text-5xl font-black mb-8 tracking-tight"
+              stagger={0.03}
+            />
+            <AnimatedText
+              el="p"
+              text="Des offres transparentes conçues pour un retour sur investissement maximal, adaptées à tous les stades de croissance."
+              className="text-xl text-slate-500 leading-relaxed"
+              stagger={0.01}
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {pricing.map((plan, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className={`relative p-10 rounded-[2.5rem] bg-white border ${plan.highlighted ? 'border-primary shadow-2xl scale-105 z-10' : 'border-slate-100 shadow-sm'} flex flex-col`}
+                whileHover={{ y: -5, scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 10 } }}
               >
                 {plan.highlighted && (
                   <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black uppercase tracking-[0.2em] px-6 py-2 rounded-full shadow-xl shadow-primary/20">
@@ -600,11 +683,11 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <Button 
+                <MagneticButton 
                   className={`w-full rounded-full h-14 font-bold text-base transition-all ${plan.highlighted ? 'bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20' : 'bg-slate-50 text-slate-900 hover:bg-slate-100'}`}
                 >
                   {plan.cta}
-                </Button>
+                </MagneticButton>
               </motion.div>
             ))}
           </div>
@@ -619,13 +702,23 @@ export default function Home() {
               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent" />
             </div>
             <div className="relative z-10 max-w-4xl mx-auto">
-              <h2 className="text-5xl lg:text-7xl font-black mb-10 tracking-tight">Discutons de votre projet</h2>
-              <p className="text-xl text-slate-400 mb-16 leading-relaxed">Partagez vos ambitions et découvrez comment Lumina Nexus peut propulser votre entreprise vers de nouveaux sommets digitaux.</p>
+              <AnimatedText
+                el="h2"
+                text="Prêt à redéfinir vos standards ? Discutons de votre projet."
+                className="text-5xl lg:text-7xl font-black mb-10 tracking-tight"
+                stagger={0.03}
+              />
+              <AnimatedText
+                el="p"
+                text="Partagez vos ambitions et découvrez comment Lumina Nexus peut propulser votre entreprise vers de nouveaux sommets digitaux."
+                className="text-xl text-slate-400 mb-16 leading-relaxed"
+                stagger={0.01}
+              />
               <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-12 h-20 text-xl font-black shadow-2xl shadow-primary/40">
+                <MagneticButton size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-12 h-20 text-xl font-black shadow-2xl shadow-primary/40">
                   Demander un audit gratuit
                   <ArrowRight className="ml-3 w-7 h-7" />
-                </Button>
+                </MagneticButton>
                 <div className="text-left">
                   <div className="text-lg font-bold">contact@lumina-nexus.com</div>
                   <div className="text-sm text-slate-500">Réponse garantie sous 24h</div>
