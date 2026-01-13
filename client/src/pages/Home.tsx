@@ -2,15 +2,18 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, Check, Code, Zap, Gauge, Lock, Rocket, Users, 
-  Search, ShieldCheck, Headphones, BarChart, Cpu, Globe, Layout 
+  Search, ShieldCheck, Headphones, BarChart, Cpu, Globe, Layout,
+  Lightbulb, Target, Award
 } from "lucide-react";
 
 /**
  * Design Philosophy: Ultra-Premium Agency (Stripe/Apple style)
- * - Refined Wording for Conversion
- * - Subtle Background Gradients
- * - Tech Stack Section for Authority
- * - Enhanced Micro-interactions
+ * Refonte Premium : Service & Entreprise au Centre
+ * - Headlines clairs et directs (< 5 secondes de compréhension)
+ * - Section "Qui sommes-nous ?" pour établir la crédibilité
+ * - Mise en avant de la méthode et de la différenciation
+ * - Wording orienté bénéfices clients et résultats
+ * - Humanisation et transparence renforcées
  */
 
 export default function Home() {
@@ -36,34 +39,46 @@ export default function Home() {
 
   const services = [
     {
-      title: "Expérience Vitrine",
-      description: "Au-delà d'un simple site, nous créons une immersion digitale qui captive vos futurs clients dès la première seconde.",
+      title: "Sites Vitrine d'Exception",
+      description: "Nous créons une immersion digitale captivante qui sublime votre image de marque et transforme vos visiteurs en prospects qualifiés.",
       icon: Globe,
+      target: "Entreprises cherchant une présence élégante et professionnelle",
+      benefits: "Renforcez votre crédibilité et augmentez votre visibilité en ligne"
     },
     {
       title: "E-commerce Haute Performance",
-      description: "Des boutiques optimisées pour la conversion massive, alliant fluidité de navigation et sécurité de paiement.",
+      description: "Des boutiques optimisées pour la conversion maximale, alliant fluidité de navigation, sécurité de paiement et stratégie de croissance.",
       icon: Zap,
+      target: "Entrepreneurs et PME en croissance",
+      benefits: "Augmentez vos ventes et optimisez votre taux de conversion"
     },
     {
       title: "Solutions Sur Mesure",
-      description: "Architectures complexes et applications web métiers conçues pour répondre à vos défis les plus ambitieux.",
+      description: "Architectures complexes et applications web métiers conçues pour répondre à vos défis les plus ambitieux avec une scalabilité garantie.",
       icon: Cpu,
+      target: "Startups et entreprises avec besoins spécifiques",
+      benefits: "Disposez d'une plateforme robuste, évolutive et parfaitement alignée"
     },
     {
       title: "Landing Pages Haute Conversion",
-      description: "Design psychologique et copywriting stratégique pour transformer votre trafic en revenus concrets.",
+      description: "Design psychologique et copywriting stratégique pour transformer votre trafic en revenus concrets et mesurables.",
       icon: Layout,
+      target: "Campagnes marketing et acquisition de leads",
+      benefits: "Maximisez votre ROI et générez des conversions qualifiées"
     },
     {
       title: "Refonte & Modernisation",
-      description: "Propulsez votre image de marque dans l'ère moderne avec une interface actuelle, rapide et intuitive.",
+      description: "Propulsez votre image de marque dans l'ère moderne avec une interface actuelle, rapide, intuitive et optimisée pour la croissance.",
       icon: Search,
+      target: "Entreprises avec site vieillissant",
+      benefits: "Regagnez en compétitivité et en performance digitale"
     },
     {
-      title: "SEO & Croissance",
-      description: "Dominez les résultats de recherche et assurez une visibilité pérenne grâce à nos stratégies sémantiques avancées.",
+      title: "SEO & Croissance Digitale",
+      description: "Dominez les résultats de recherche et assurez une visibilité pérenne grâce à nos stratégies sémantiques et techniques avancées.",
       icon: BarChart,
+      target: "Entreprises souhaitant augmenter leur trafic organique",
+      benefits: "Générez du trafic qualifié et durable sans dépendre de la publicité"
     },
   ];
 
@@ -80,7 +95,7 @@ export default function Home() {
     {
       name: "Starter",
       price: "2 990",
-      description: "L'essentiel pour une présence digitale de qualité.",
+      description: "L'essentiel pour une présence digitale de qualité professionnelle.",
       features: [
         "Design Unique & Responsive",
         "Optimisation SEO On-page",
@@ -89,12 +104,12 @@ export default function Home() {
         "Support 30 jours",
       ],
       highlighted: false,
-      cta: "Lancer mon projet",
+      cta: "Découvrir cette offre",
     },
     {
       name: "Business",
       price: "5 990",
-      description: "La solution complète pour les entreprises en pleine croissance.",
+      description: "La solution complète pour les entreprises en pleine croissance et transformation digitale.",
       features: [
         "Tout le pack Starter",
         "Blog & Stratégie de Contenu",
@@ -108,7 +123,7 @@ export default function Home() {
     {
       name: "Premium",
       price: "12 990",
-      description: "L'excellence digitale pour les leaders de leur marché.",
+      description: "L'excellence digitale pour les leaders de leur marché et les startups ambitieuses.",
       features: [
         "E-commerce ou App Métier",
         "Automatisations Avancées",
@@ -122,7 +137,7 @@ export default function Home() {
     {
       name: "Sur-mesure",
       price: "Sur devis",
-      description: "Projets complexes et architectures spécifiques.",
+      description: "Projets complexes, architectures spécifiques et besoins d'intégration avancée.",
       features: [
         "Architecture Cloud Scalable",
         "Intégrations API Tierces",
@@ -138,23 +153,50 @@ export default function Home() {
   const whyUs = [
     {
       title: "Expertise Senior",
-      description: "Pas de stagiaires. Votre projet est géré par des experts ayant 10+ ans d'expérience.",
-      icon: Users,
+      description: "Pas de stagiaires. Votre projet est géré par des experts ayant 10+ ans d'expérience dans le web et la croissance digitale.",
+      icon: Award,
     },
     {
       title: "Obsession Qualité",
-      description: "Nous ne livrons rien qui ne soit pas parfait. Chaque pixel et chaque ligne de code comptent.",
+      description: "Nous ne livrons rien qui ne soit pas parfait. Chaque pixel et chaque ligne de code sont optimisés pour la performance et l'esthétique.",
       icon: ShieldCheck,
     },
     {
-      title: "Vitesse Absolue",
-      description: "Le temps, c'est de l'argent. Nos sites chargent en moins d'une seconde.",
+      title: "Vitesse & Performance",
+      description: "Nos sites chargent en moins d'une seconde avec des scores Lighthouse de 90+. La vitesse génère des conversions.",
       icon: Zap,
     },
     {
       title: "Transparence Totale",
-      description: "Suivi en temps réel de l'avancement et communication fluide via Slack/Discord.",
+      description: "Suivi en temps réel de l'avancement et communication fluide via Slack/Discord. Vous savez toujours où en est votre projet.",
       icon: Headphones,
+    },
+  ];
+
+  const methodSteps = [
+    {
+      number: "01",
+      title: "Audit Stratégique",
+      description: "Nous analysons vos besoins, votre marché et vos objectifs pour définir une stratégie digitale claire et mesurable.",
+      icon: Target,
+    },
+    {
+      number: "02",
+      title: "Conception UX/UI",
+      description: "Création d'interfaces intuitives et de parcours utilisateurs optimisés pour maximiser l'engagement et la conversion.",
+      icon: Layout,
+    },
+    {
+      number: "03",
+      title: "Développement Agile",
+      description: "Implémentation technique robuste avec les technologies de pointe, livrée dans les délais et avec une qualité irréprochable.",
+      icon: Code,
+    },
+    {
+      number: "04",
+      title: "Optimisation Continue",
+      description: "Suivi des performances, ajustements SEO et améliorations post-lancement pour une croissance digitale constante.",
+      icon: BarChart,
     },
   ];
 
@@ -172,23 +214,23 @@ export default function Home() {
             <span className="text-slate-900 ml-1">Nexus</span>
           </motion.div>
           <div className="hidden md:flex items-center gap-10 text-sm font-semibold text-slate-500">
+            <a href="#about" className="hover:text-primary transition-all">À Propos</a>
             <a href="#services" className="hover:text-primary transition-all">Services</a>
+            <a href="#methode" className="hover:text-primary transition-all">Méthode</a>
             <a href="#offres" className="hover:text-primary transition-all">Offres</a>
-            <a href="#expertise" className="hover:text-primary transition-all">Expertise</a>
-            <a href="#processus" className="hover:text-primary transition-all">Processus</a>
           </div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
           >
             <Button className="bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 rounded-full px-8 font-bold">
-              Démarrer un projet
+              Audit Gratuit
             </Button>
           </motion.div>
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section - Refonte Premium */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-b from-slate-50 to-white">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
@@ -207,22 +249,22 @@ export default function Home() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                 </span>
-                L'excellence digitale pour votre marque
+                Votre partenaire en excellence digitale
               </motion.div>
               
               <motion.h1
                 variants={itemVariants}
                 className="text-6xl lg:text-8xl font-black leading-[1] tracking-tight text-slate-900"
               >
-                Votre présence <br />
-                <span className="text-primary">exceptionnelle</span>
+                Propulsez votre <br />
+                <span className="text-primary">entreprise</span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
                 className="text-xl text-slate-500 max-w-xl leading-relaxed"
               >
-                Nous ne créons pas seulement des sites web. Nous bâtissons des vecteurs de croissance premium, alliant design émotionnel et ingénierie de pointe.
+                Lumina Nexus conçoit des écosystèmes digitaux sur mesure qui transforment votre vision technique en levier de croissance concret. Nous bâtissons des solutions web haute performance pour les PME et startups exigeantes.
               </motion.p>
 
               <motion.div
@@ -233,12 +275,12 @@ export default function Home() {
                   size="lg"
                   className="bg-primary text-white hover:bg-primary/90 shadow-2xl shadow-primary/30 rounded-full px-10 h-16 text-lg font-bold"
                 >
-                  Lancer mon projet
+                  Obtenez votre audit gratuit
                   <ArrowRight className="ml-2 w-6 h-6" />
                 </Button>
                 <div className="flex flex-col justify-center">
                   <span className="text-sm font-bold text-slate-900">Réponse sous 24h</span>
-                  <span className="text-xs text-slate-400">Audit gratuit inclus</span>
+                  <span className="text-xs text-slate-400">Diagnostic complet inclus</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -257,7 +299,7 @@ export default function Home() {
                     <div className="w-3.5 h-3.5 rounded-full bg-slate-100" />
                   </div>
                   <div className="px-4 py-1 rounded-full bg-slate-50 text-[10px] font-bold text-slate-400 tracking-widest uppercase">
-                    Secure Environment
+                    Performance Optimale
                   </div>
                 </div>
                 <div className="space-y-8">
@@ -265,13 +307,13 @@ export default function Home() {
                   <div className="h-3 w-full bg-slate-50 rounded-full" />
                   <div className="h-3 w-2/3 bg-slate-50 rounded-full" />
                   <div className="grid grid-cols-2 gap-6 pt-6">
-                    <div className="p-6 bg-primary/5 rounded-3xl border border-primary/10">
-                      <div className="text-3xl font-black text-primary mb-1">98%</div>
-                      <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Conversion Rate</div>
+                    <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                      <div className="text-3xl font-black text-slate-900 mb-1">+45%</div>
+                      <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Conversion Moyenne</div>
                     </div>
                     <div className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
                       <div className="text-3xl font-black text-slate-900 mb-1">0.8s</div>
-                      <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Load Time</div>
+                      <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Temps de Chargement</div>
                     </div>
                   </div>
                 </div>
@@ -309,7 +351,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* About Section - Nouvelle Section */}
+      <section id="about" className="py-32 bg-slate-50">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-10"
+            >
+              <div>
+                <h2 className="text-5xl lg:text-6xl font-black mb-8 tracking-tight">
+                  L'expertise humaine <br />
+                  <span className="text-primary">derrière votre succès</span>
+                </h2>
+                <p className="text-xl text-slate-500 leading-relaxed">
+                  Chez Lumina Nexus, nous sommes une équipe d'experts passionnés par la création de solutions web qui propulsent la croissance de votre entreprise. Nous croyons que la technologie doit servir une vision claire et générer des résultats concrets.
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-black text-slate-900 mb-3">Notre Mission</h3>
+                  <p className="text-slate-500 leading-relaxed">
+                    Démocratiser l'excellence technique et le design émotionnel pour les entreprises qui aspirent à une présence digitale impactante et durable.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black text-slate-900 mb-3">Notre Vision</h3>
+                  <p className="text-slate-500 leading-relaxed">
+                    Devenir le partenaire de croissance digital de référence pour les PME et startups, reconnu pour notre approche personnalisée et notre capacité à générer un retour sur investissement mesurable.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            >
+              {[
+                { label: "Années d'Expérience", value: "10+" },
+                { label: "Projets Réussis", value: "150+" },
+                { label: "Clients Satisfaits", value: "100%" },
+                { label: "Score Lighthouse", value: "90+" },
+              ].map((stat, i) => (
+                <div key={i} className="p-8 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                  <div className="text-4xl font-black text-primary mb-2">{stat.value}</div>
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-wider">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section - Reformulé */}
       <section id="services" className="py-32 bg-white">
         <div className="container">
           <div className="max-w-3xl mb-24">
@@ -319,8 +419,8 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-5xl lg:text-6xl font-black mb-8 tracking-tight"
             >
-              Nos services <br />
-              <span className="text-primary">d'excellence</span>
+              Nos Solutions <br />
+              <span className="text-primary">pour votre croissance</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -328,7 +428,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-xl text-slate-500 leading-relaxed"
             >
-              Nous combinons stratégie, design et technologie pour créer des produits digitaux qui dominent leur marché.
+              Chaque entreprise est unique. Lumina Nexus propose une gamme de solutions sur mesure, conçues pour répondre précisément à vos besoins et vous garantir un avantage concurrentiel durable.
             </motion.p>
           </div>
 
@@ -340,15 +440,121 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:border-primary/20 hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.06)] transition-all duration-500"
+                className="group p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:border-primary/20 hover:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.06)] transition-all duration-500 flex flex-col"
               >
                 <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white transition-all duration-500">
                   <service.icon className="w-8 h-8 text-slate-900 group-hover:text-white" />
                 </div>
-                <h3 className="text-2xl font-black mb-5 tracking-tight group-hover:text-primary transition-colors">{service.title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{service.description}</p>
+                <h3 className="text-2xl font-black mb-3 tracking-tight group-hover:text-primary transition-colors">{service.title}</h3>
+                <p className="text-slate-500 leading-relaxed text-sm mb-6 flex-grow">{service.description}</p>
+                <div className="space-y-4 pt-6 border-t border-slate-100">
+                  <div>
+                    <span className="text-xs font-bold text-primary uppercase tracking-wider">À qui s'adresse</span>
+                    <p className="text-sm text-slate-600 mt-1">{service.target}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-primary uppercase tracking-wider">Bénéfices</span>
+                    <p className="text-sm text-slate-600 mt-1">{service.benefits}</p>
+                  </div>
+                </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Method Section - Nouvelle Section */}
+      <section id="methode" className="py-32 bg-slate-50">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-24">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl lg:text-6xl font-black mb-8 tracking-tight"
+            >
+              Notre Approche <br />
+              <span className="text-primary">Nexus Strategy</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-xl text-slate-500 leading-relaxed"
+            >
+              Une méthode éprouvée en 4 étapes pour transformer votre vision en réalité digitale performante et durable.
+            </motion.p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {methodSteps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative p-10 rounded-[2.5rem] bg-white border border-slate-100 hover:shadow-lg transition-all"
+              >
+                <div className="text-6xl font-black text-primary/10 mb-4">{step.number}</div>
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 absolute top-8 right-8">
+                  <step.icon className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="text-xl font-black text-slate-900 mb-4 tracking-tight">{step.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Expertise Section - Reformulé */}
+      <section className="py-32 bg-white">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+            <div>
+              <h2 className="text-5xl font-black mb-12 tracking-tight">
+                Pourquoi nous <br />
+                <span className="text-primary">confier votre vision</span>
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                {whyUs.map((item, index) => (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="space-y-5"
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center">
+                      <item.icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-black text-slate-900 tracking-tight">{item.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-[3rem] bg-slate-50 overflow-hidden border border-slate-100 flex items-center justify-center p-10">
+                <div className="w-full h-full bg-white rounded-[2rem] shadow-2xl p-12 flex flex-col justify-between border border-slate-50">
+                  <div className="space-y-6">
+                    <div className="h-4 w-1/2 bg-slate-50 rounded-full" />
+                    <div className="h-4 w-full bg-slate-50 rounded-full" />
+                    <div className="h-4 w-3/4 bg-slate-50 rounded-full" />
+                  </div>
+                  <div className="flex items-end justify-between">
+                    <div className="flex -space-x-4">
+                      {[1,2,3].map(i => (
+                        <div key={i} className="w-12 h-12 rounded-full bg-slate-100 border-4 border-white" />
+                      ))}
+                    </div>
+                    <div className="w-32 h-12 bg-primary rounded-2xl shadow-lg shadow-primary/20" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -357,8 +563,8 @@ export default function Home() {
       <section id="offres" className="py-32 bg-slate-50">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-24">
-            <h2 className="text-5xl font-black mb-8 tracking-tight">Investissez dans votre <span className="text-primary">succès</span></h2>
-            <p className="text-xl text-slate-500">Des offres transparentes conçues pour un retour sur investissement maximal.</p>
+            <h2 className="text-5xl font-black mb-8 tracking-tight">Investissez dans votre <span className="text-primary">succès digital</span></h2>
+            <p className="text-xl text-slate-500">Des offres transparentes conçues pour un retour sur investissement maximal, adaptées à tous les stades de croissance.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -405,54 +611,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Expertise Section */}
-      <section id="expertise" className="py-32 bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
-            <div>
-              <h2 className="text-5xl font-black mb-12 tracking-tight">Pourquoi nous confier votre <span className="text-primary">vision</span> ?</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                {whyUs.map((item, index) => (
-                  <motion.div 
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="space-y-5"
-                  >
-                    <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center">
-                      <item.icon className="w-7 h-7 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-black text-slate-900 tracking-tight">{item.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square rounded-[3rem] bg-slate-50 overflow-hidden border border-slate-100 flex items-center justify-center p-10">
-                <div className="w-full h-full bg-white rounded-[2rem] shadow-2xl p-12 flex flex-col justify-between border border-slate-50">
-                  <div className="space-y-6">
-                    <div className="h-4 w-1/2 bg-slate-50 rounded-full" />
-                    <div className="h-4 w-full bg-slate-50 rounded-full" />
-                    <div className="h-4 w-3/4 bg-slate-50 rounded-full" />
-                  </div>
-                  <div className="flex items-end justify-between">
-                    <div className="flex -space-x-4">
-                      {[1,2,3].map(i => (
-                        <div key={i} className="w-12 h-12 rounded-full bg-slate-100 border-4 border-white" />
-                      ))}
-                    </div>
-                    <div className="w-32 h-12 bg-primary rounded-2xl shadow-lg shadow-primary/20" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Final */}
       <section className="py-32 bg-white">
         <div className="container">
@@ -461,11 +619,11 @@ export default function Home() {
               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent" />
             </div>
             <div className="relative z-10 max-w-4xl mx-auto">
-              <h2 className="text-5xl lg:text-7xl font-black mb-10 tracking-tight">Prêt à redéfinir vos standards ?</h2>
-              <p className="text-xl text-slate-400 mb-16 leading-relaxed">Discutons de vos ambitions et créons ensemble l'outil qui propulsera votre entreprise vers de nouveaux sommets.</p>
+              <h2 className="text-5xl lg:text-7xl font-black mb-10 tracking-tight">Discutons de votre projet</h2>
+              <p className="text-xl text-slate-400 mb-16 leading-relaxed">Partagez vos ambitions et découvrez comment Lumina Nexus peut propulser votre entreprise vers de nouveaux sommets digitaux.</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-12 h-20 text-xl font-black shadow-2xl shadow-primary/40">
-                  Démarrer maintenant
+                  Demander un audit gratuit
                   <ArrowRight className="ml-3 w-7 h-7" />
                 </Button>
                 <div className="text-left">
@@ -488,16 +646,16 @@ export default function Home() {
                 <span className="text-slate-900 ml-1">Nexus</span>
               </div>
               <p className="text-slate-500 max-w-md text-lg leading-relaxed">
-                L'agence web premium dédiée aux marques qui refusent la médiocrité. Nous bâtissons le futur du web, un pixel à la fois.
+                Votre partenaire en solutions web haute performance. Nous transformons votre vision en levier de croissance concret pour votre entreprise.
               </p>
             </div>
             <div>
               <h4 className="font-black text-slate-900 mb-8 uppercase tracking-widest text-xs">Navigation</h4>
               <ul className="space-y-5 text-slate-500 font-bold text-sm">
+                <li><a href="#about" className="hover:text-primary transition-all">À Propos</a></li>
                 <li><a href="#services" className="hover:text-primary transition-all">Services</a></li>
+                <li><a href="#methode" className="hover:text-primary transition-all">Méthode</a></li>
                 <li><a href="#offres" className="hover:text-primary transition-all">Offres</a></li>
-                <li><a href="#expertise" className="hover:text-primary transition-all">Expertise</a></li>
-                <li><a href="#" className="hover:text-primary transition-all">Projets</a></li>
               </ul>
             </div>
             <div>
