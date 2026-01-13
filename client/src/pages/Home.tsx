@@ -1,19 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Code, Zap, Gauge, Lock, Rocket, Users } from "lucide-react";
+import { ArrowRight, Check, Code, Zap, Gauge, Lock, Rocket, Users, Search, ShieldCheck, Headphones, BarChart } from "lucide-react";
 import { useState } from "react";
 
 /**
- * Design Philosophy: Minimalisme Futuriste Épuré
- * - Dark background (#0a0a0a) with electric blue (#00d9ff) and neon violet (#b300ff) accents
- * - Asymmetric layouts with generous whitespace
- * - Fluid animations and micro-interactions
- * - Satoshi Bold for titles, Inter for body text
+ * Design Philosophy: Premium Agency (Stripe/Apple style)
+ * - Light background (#FFFFFF / #F5F5F5)
+ * - Primary color: Dodger Blue (#1E90FF)
+ * - Modern typography: Inter, Poppins
+ * - Subtle animations and micro-interactions
  */
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("starter");
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -30,7 +28,7 @@ export default function Home() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { duration: 0.6, ease: "easeOut" },
     },
   };
 
@@ -41,13 +39,13 @@ export default function Home() {
       icon: Code,
     },
     {
-      title: "E-commerce",
+      title: "Site E-commerce",
       description: "Boutique en ligne performante optimisée pour les ventes et la conversion.",
       icon: Zap,
     },
     {
-      title: "Site Professionnel",
-      description: "Solutions sur mesure pour les entreprises qui veulent dominer leur marché.",
+      title: "Site Sur Mesure",
+      description: "Développement personnalisé selon vos besoins spécifiques et votre vision.",
       icon: Rocket,
     },
     {
@@ -56,14 +54,14 @@ export default function Home() {
       icon: Gauge,
     },
     {
-      title: "Site Sur Mesure",
-      description: "Développement personnalisé selon vos besoins spécifiques et votre vision.",
-      icon: Code,
+      title: "Refonte de Site",
+      description: "Modernisez votre image de marque avec une interface actuelle et performante.",
+      icon: Search,
     },
     {
-      title: "SEO & Performance",
-      description: "Optimisation complète pour dominer Google et améliorer votre visibilité.",
-      icon: Rocket,
+      title: "Maintenance & SEO",
+      description: "Optimisation complète pour dominer Google et assurer la pérennité de votre site.",
+      icon: BarChart,
     },
   ];
 
@@ -76,7 +74,7 @@ export default function Home() {
         "Site vitrine 5 pages",
         "Design responsive",
         "Optimisation SEO basique",
-        "Contact form",
+        "Formulaire de contact",
         "1 mois de support",
       ],
       highlighted: false,
@@ -84,7 +82,7 @@ export default function Home() {
     {
       name: "Business",
       price: "5 990",
-      description: "Pour les PME",
+      description: "Pour les PME en croissance",
       features: [
         "Site jusqu'à 15 pages",
         "Design premium",
@@ -92,14 +90,13 @@ export default function Home() {
         "Blog intégré",
         "Analytics",
         "3 mois de support",
-        "Maintenance incluse",
       ],
       highlighted: true,
     },
     {
       name: "Premium",
       price: "12 990",
-      description: "Pour les entreprises",
+      description: "Pour les entreprises établies",
       features: [
         "Site illimité",
         "E-commerce complet",
@@ -107,13 +104,12 @@ export default function Home() {
         "Automatisations",
         "API personnalisées",
         "Support prioritaire",
-        "6 mois de maintenance",
       ],
       highlighted: false,
     },
     {
       name: "Sur-mesure",
-      price: "À partir de 25 000",
+      price: "Sur devis",
       description: "Solutions enterprise",
       features: [
         "Architecture custom",
@@ -129,43 +125,38 @@ export default function Home() {
 
   const whyUs = [
     {
-      title: "Expertise Reconnue",
-      description: "15+ ans d'expérience en développement web et design digital.",
+      title: "Expertise",
+      description: "Une équipe de seniors passionnés par l'excellence technique.",
       icon: Users,
     },
     {
-      title: "Qualité Premium",
-      description: "Chaque projet est traité comme une masterpiece, pas un produit standard.",
-      icon: Zap,
-    },
-    {
-      title: "Sécurité Maximale",
-      description: "Certifications SSL, RGPD compliant, backups automatiques et protection DDoS.",
-      icon: Lock,
+      title: "Qualité",
+      description: "Chaque pixel est pensé pour offrir une expérience utilisateur parfaite.",
+      icon: ShieldCheck,
     },
     {
       title: "Performance",
-      description: "Lighthouse 90+, temps de chargement < 2s, optimisation Core Web Vitals.",
-      icon: Gauge,
+      description: "Des sites ultra-rapides qui surpassent les standards du web.",
+      icon: Zap,
     },
     {
-      title: "SEO Domination",
-      description: "Stratégie EEAT, structure sémantique parfaite, top 10 Google garanti.",
-      icon: Rocket,
+      title: "Support",
+      description: "Un accompagnement humain et réactif à chaque étape.",
+      icon: Headphones,
     },
     {
-      title: "Support Réactif",
-      description: "Équipe disponible pour vos questions, mises à jour et améliorations.",
-      icon: Code,
+      title: "SEO",
+      description: "Une structure optimisée pour atteindre les sommets des moteurs de recherche.",
+      icon: Search,
     },
   ];
 
   const processSteps = [
     { step: "01", title: "Analyse", description: "Audit complet de vos besoins et objectifs" },
-    { step: "02", title: "Design", description: "Prototypes et validation du concept" },
+    { step: "02", title: "Design", description: "Prototypes et validation du concept visuel" },
     { step: "03", title: "Développement", description: "Codage optimisé et tests rigoureux" },
     { step: "04", title: "Optimisation", description: "SEO, performance et sécurité" },
-    { step: "05", title: "Livraison", description: "Déploiement et formation" },
+    { step: "05", title: "Livraison", description: "Déploiement et formation à l'outil" },
     { step: "06", title: "Suivi", description: "Support et améliorations continues" },
   ];
 
@@ -191,25 +182,30 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container flex items-center justify-between h-16">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
+        <div className="container flex items-center justify-between h-20">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-xl font-bold"
+            className="text-2xl font-bold tracking-tight"
           >
-            <span className="text-primary">Agence</span>
-            <span className="text-accent ml-2">Web</span>
+            <span className="text-primary">Lumina</span>
+            <span className="text-foreground ml-1">Nexus</span>
           </motion.div>
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+            <a href="#services" className="hover:text-primary transition-colors">Services</a>
+            <a href="#offres" className="hover:text-primary transition-colors">Offres</a>
+            <a href="#processus" className="hover:text-primary transition-colors">Processus</a>
+          </div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Button className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-all">
+            <Button className="bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all rounded-full px-6">
               Demander un devis
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
@@ -218,54 +214,58 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{ backgroundImage: "url('/images/hero-background.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/50 to-background" />
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#F8FAFC]">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] bg-primary/5 rounded-full blur-[120px]" />
+          <div className="absolute -bottom-[20%] -left-[10%] w-[60%] h-[60%] bg-primary/5 rounded-full blur-[120px]" />
+        </div>
 
         <div className="container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               variants={containerVariants}
               initial="hidden"
               animate="visible"
               className="space-y-8"
             >
+              <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                Agence Web Premium
+              </motion.div>
+              
               <motion.h1
                 variants={itemVariants}
-                className="text-5xl lg:text-7xl font-bold leading-tight"
+                className="text-6xl lg:text-8xl font-extrabold leading-[1.1] tracking-tight text-slate-900"
               >
-                Votre présence web
-                <br />
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  extraordinaire
-                </span>
+                Votre présence web <br />
+                <span className="text-primary">exceptionnelle</span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
-                className="text-xl text-muted-foreground max-w-lg"
+                className="text-xl text-slate-600 max-w-lg leading-relaxed"
               >
-                Nous créons des sites web qui ne se contentent pas d'exister. Ils convertissent, ils inspirent, ils dominent Google.
+                Nous concevons des expériences digitales de haute qualité qui allient design épuré, performance technique et stratégie de conversion.
               </motion.p>
 
               <motion.div
                 variants={itemVariants}
-                className="flex gap-4"
+                className="flex flex-wrap gap-4"
               >
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-all"
+                  className="bg-primary text-white hover:bg-primary/90 shadow-xl shadow-primary/20 transition-all rounded-full px-8 h-14 text-base"
                 >
-                  Audit gratuit
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  Demander un devis
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-primary text-primary hover:bg-primary/10"
+                  className="border-slate-200 text-slate-600 hover:bg-slate-50 rounded-full px-8 h-14 text-base"
                 >
                   Voir nos projets
                 </Button>
@@ -273,377 +273,326 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative h-96 lg:h-full"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+              className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg blur-3xl" />
-              <div className="relative bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg border border-primary/20 h-full flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl font-bold text-primary mb-4">98/100</div>
-                  <p className="text-muted-foreground">Lighthouse Score</p>
+              <div className="relative bg-white p-8 rounded-3xl shadow-2xl border border-slate-100">
+                <div className="flex items-center justify-between mb-8">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400" />
+                    <div className="w-3 h-3 rounded-full bg-amber-400" />
+                    <div className="w-3 h-3 rounded-full bg-green-400" />
+                  </div>
+                  <div className="text-xs font-medium text-slate-400">lumina-nexus.com</div>
+                </div>
+                <div className="space-y-6">
+                  <div className="h-4 w-2/3 bg-slate-100 rounded-full" />
+                  <div className="h-4 w-full bg-slate-100 rounded-full" />
+                  <div className="h-4 w-5/6 bg-slate-100 rounded-full" />
+                  <div className="grid grid-cols-3 gap-4 pt-4">
+                    <div className="aspect-square bg-primary/5 rounded-2xl flex items-center justify-center">
+                      <Zap className="text-primary w-8 h-8" />
+                    </div>
+                    <div className="aspect-square bg-primary/5 rounded-2xl flex items-center justify-center">
+                      <BarChart className="text-primary w-8 h-8" />
+                    </div>
+                    <div className="aspect-square bg-primary/5 rounded-2xl flex items-center justify-center">
+                      <ShieldCheck className="text-primary w-8 h-8" />
+                    </div>
+                  </div>
                 </div>
               </div>
+              {/* Floating Badge */}
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4"
+              >
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                  <Check className="text-green-600 w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-slate-900">98/100</div>
+                  <div className="text-xs text-slate-500 font-medium">Lighthouse Score</div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-24 border-t border-border">
+      <section id="services" className="py-32 bg-white">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Tous les types de sites web
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl">
-              De la vitrine élégante au e-commerce performant, nous maîtrisons tous les domaines.
-            </p>
-          </motion.div>
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl lg:text-5xl font-bold mb-6 text-slate-900"
+            >
+              Nos services d'excellence
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-xl text-slate-500"
+            >
+              Une approche holistique du web pour propulser votre activité vers de nouveaux sommets.
+            </motion.p>
+          </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {services.map((service, idx) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  variants={itemVariants}
-                  whileHover={{ y: -8 }}
-                  className="group p-8 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-primary/50 transition-all cursor-pointer"
-                >
-                  <Icon className="w-12 h-12 text-primary mb-4 group-hover:text-accent transition-colors" />
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.description}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group p-8 rounded-3xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-300"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                  <service.icon className="w-7 h-7 text-primary group-hover:text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-slate-900 group-hover:text-primary transition-colors">{service.title}</h3>
+                <p className="text-slate-500 leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="py-24 border-t border-border relative">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{ backgroundImage: "url('/images/pricing-accent.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+      <section id="offres" className="py-32 bg-[#F8FAFC]">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-slate-900">Des offres claires et adaptées</h2>
+            <p className="text-xl text-slate-500">Choisissez le pack qui correspond à vos ambitions.</p>
+          </div>
 
-        <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16 text-center"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Formules transparentes
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Choisissez le plan qui correspond à votre ambition
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {pricing.map((plan, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {pricing.map((plan, index) => (
               <motion.div
-                key={idx}
-                variants={itemVariants}
-                whileHover={{ y: -8 }}
-                className={`p-8 rounded-lg border transition-all ${
-                  plan.highlighted
-                    ? "bg-gradient-to-br from-primary/20 to-accent/20 border-primary/50 ring-2 ring-primary/30"
-                    : "bg-card/50 border-border hover:border-primary/50"
-                }`}
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`relative p-8 rounded-3xl bg-white border ${plan.highlighted ? 'border-primary shadow-2xl scale-105 z-10' : 'border-slate-100 shadow-sm'} flex flex-col`}
               >
                 {plan.highlighted && (
-                  <div className="mb-4 inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-semibold">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full">
                     Recommandé
                   </div>
                 )}
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-muted-foreground mb-4">{plan.description}</p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">{plan.price}€</span>
-                  {!plan.price.includes("À partir") && <span className="text-muted-foreground ml-2">/projet</span>}
+                <div className="mb-8">
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{plan.name}</h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-extrabold text-primary">{plan.price}</span>
+                    <span className="text-slate-400 text-sm font-medium">€</span>
+                  </div>
+                  <p className="text-slate-500 text-sm mt-2">{plan.description}</p>
                 </div>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, fidx) => (
-                    <li key={fidx} className="flex items-center gap-3">
-                      <Check className="w-4 h-4 text-primary" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
+                <div className="space-y-4 mb-8 flex-grow">
+                  {plan.features.map((feature, fIndex) => (
+                    <div key={fIndex} className="flex items-center gap-3 text-sm text-slate-600">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      {feature}
+                    </div>
                   ))}
-                </ul>
-                <Button
-                  className={`w-full ${
-                    plan.highlighted
-                      ? "bg-primary text-primary-foreground hover:bg-accent"
-                      : "bg-accent text-accent-foreground hover:bg-primary"
-                  }`}
+                </div>
+                <Button 
+                  className={`w-full rounded-full h-12 ${plan.highlighted ? 'bg-primary text-white hover:bg-primary/90' : 'bg-slate-50 text-slate-900 hover:bg-slate-100'}`}
                 >
-                  Commencer
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  Choisir cette offre
                 </Button>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Why Us Section */}
-      <section className="py-24 border-t border-border">
+      <section className="py-32 bg-white">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Pourquoi nous choisir
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl">
-              Nous ne sommes pas juste des développeurs. Nous sommes des experts en conversion, SEO et design premium.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {whyUs.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  variants={itemVariants}
-                  className="space-y-4"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-primary" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-slate-900">Pourquoi choisir Lumina Nexus ?</h2>
+              <div className="space-y-8">
+                {whyUs.map((item, index) => (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex gap-6"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center flex-shrink-0">
+                      <item.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                      <p className="text-slate-500 leading-relaxed">{item.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-3xl bg-slate-50 overflow-hidden border border-slate-100">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-3/4 h-3/4 bg-white rounded-2xl shadow-2xl p-8 flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <div className="h-2 w-1/2 bg-slate-100 rounded-full" />
+                      <div className="h-2 w-full bg-slate-100 rounded-full" />
+                      <div className="h-2 w-3/4 bg-slate-100 rounded-full" />
+                    </div>
+                    <div className="flex items-end justify-between">
+                      <div className="flex gap-2">
+                        <div className="w-8 h-8 rounded-full bg-primary/10" />
+                        <div className="w-8 h-8 rounded-full bg-primary/10" />
+                      </div>
+                      <div className="w-20 h-8 bg-primary rounded-lg" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="py-24 border-t border-border relative">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: "url('/images/process-visual.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-background" />
+      <section id="processus" className="py-32 bg-[#F8FAFC]">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-slate-900">Notre processus de création</h2>
+            <p className="text-xl text-slate-500">Une méthodologie rigoureuse pour des résultats exceptionnels.</p>
+          </div>
 
-        <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Notre processus éprouvé
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl">
-              6 étapes pour transformer votre vision en réalité digitale exceptionnelle.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {processSteps.map((item, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="relative"
-              >
-                <div className="flex gap-6">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-16 w-16 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30">
-                      <span className="text-2xl font-bold text-primary">{item.step}</span>
-                    </div>
+          <div className="relative">
+            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2 z-0" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 relative z-10">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm text-center"
+                >
+                  <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold mx-auto mb-4 shadow-lg shadow-primary/20">
+                    {step.step}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-muted-foreground">{item.description}</p>
-                  </div>
-                </div>
-                {idx < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-20 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent" />
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+                  <h3 className="font-bold text-slate-900 mb-2">{step.title}</h3>
+                  <p className="text-xs text-slate-500">{step.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 border-t border-border">
+      <section className="py-32 bg-white">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              Nos clients nous adorent
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl">
-              Découvrez ce que disent les entreprises qui nous ont fait confiance.
-            </p>
-          </motion.div>
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-slate-900">Ils nous font confiance</h2>
+          </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {testimonials.map((testimonial, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((t, index) => (
               <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="p-8 rounded-lg border border-border bg-card/50 hover:bg-card transition-all"
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm"
               >
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <span key={i} className="text-primary text-lg">
-                      ★
-                    </span>
+                <div className="flex gap-1 mb-6">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Zap key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
                   ))}
                 </div>
-                <p className="text-lg mb-6 italic">"{testimonial.text}"</p>
-                <div>
-                  <p className="font-bold">{testimonial.name}</p>
-                  <p className="text-muted-foreground text-sm">{testimonial.company}</p>
+                <p className="text-slate-600 italic mb-8 leading-relaxed">"{t.text}"</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-slate-100" />
+                  <div>
+                    <div className="font-bold text-slate-900">{t.name}</div>
+                    <div className="text-xs text-slate-400">{t.company}</div>
+                  </div>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 border-t border-border relative">
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{ backgroundImage: "url('/images/testimonials-bg.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background to-background" />
-
-        <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto space-y-8"
-          >
-            <h2 className="text-4xl lg:text-6xl font-bold">
-              Prêt à transformer votre présence web ?
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Commencez par un audit gratuit. Découvrez le potentiel inexploité de votre site.
-            </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground transition-all px-8 py-6 text-lg"
-              >
-                Demander un audit gratuit
-                <ArrowRight className="ml-2 w-5 h-5" />
+      {/* CTA Final */}
+      <section className="py-32 bg-white">
+        <div className="container">
+          <div className="bg-primary rounded-[3rem] p-12 lg:p-24 text-center text-white relative overflow-hidden shadow-2xl shadow-primary/30">
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
+              <div className="absolute -top-1/2 -left-1/4 w-full h-full bg-white rounded-full blur-[120px]" />
+              <div className="absolute -bottom-1/2 -right-1/4 w-full h-full bg-white rounded-full blur-[120px]" />
+            </div>
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <h2 className="text-4xl lg:text-6xl font-bold mb-8">Prêt à lancer votre projet ?</h2>
+              <p className="text-xl text-white/80 mb-12">Discutons de vos objectifs et créons ensemble quelque chose d'exceptionnel.</p>
+              <Button size="lg" className="bg-white text-primary hover:bg-slate-50 rounded-full px-10 h-16 text-lg font-bold shadow-xl">
+                Demander un devis maintenant
+                <ArrowRight className="ml-2 w-6 h-6" />
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-12 bg-card/50">
+      <footer className="py-20 bg-white border-t border-slate-100">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <h3 className="font-bold mb-4">
-                <span className="text-primary">Agence</span>
-                <span className="text-accent ml-2">Web</span>
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                Solutions web premium pour les entreprises ambitieuses.
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div className="col-span-1 md:col-span-2">
+              <div className="text-2xl font-bold mb-6">
+                <span className="text-primary">Lumina</span>
+                <span className="text-slate-900 ml-1">Nexus</span>
+              </div>
+              <p className="text-slate-500 max-w-sm leading-relaxed">
+                L'agence web premium qui transforme vos idées en expériences digitales mémorables et performantes.
               </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">Site Vitrine</a></li>
-                <li><a href="#" className="hover:text-primary transition">E-commerce</a></li>
-                <li><a href="#" className="hover:text-primary transition">SEO</a></li>
+              <h4 className="font-bold text-slate-900 mb-6">Navigation</h4>
+              <ul className="space-y-4 text-slate-500 text-sm">
+                <li><a href="#services" className="hover:text-primary transition-colors">Services</a></li>
+                <li><a href="#offres" className="hover:text-primary transition-colors">Offres</a></li>
+                <li><a href="#processus" className="hover:text-primary transition-colors">Processus</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Projets</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Entreprise</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">À propos</a></li>
-                <li><a href="#" className="hover:text-primary transition">Blog</a></li>
-                <li><a href="#" className="hover:text-primary transition">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">Légal</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition">Mentions légales</a></li>
-                <li><a href="#" className="hover:text-primary transition">Confidentialité</a></li>
-                <li><a href="#" className="hover:text-primary transition">CGU</a></li>
+              <h4 className="font-bold text-slate-900 mb-6">Contact</h4>
+              <ul className="space-y-4 text-slate-500 text-sm">
+                <li>contact@lumina-nexus.com</li>
+                <li>Paris, France</li>
+                <li>+33 1 23 45 67 89</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-            <p>&copy; 2024 Agence Web Premium. Tous droits réservés.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-primary transition">Twitter</a>
-              <a href="#" className="hover:text-primary transition">LinkedIn</a>
-              <a href="#" className="hover:text-primary transition">Instagram</a>
+          <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+            <p>© 2026 Lumina Nexus. Tous droits réservés.</p>
+            <div className="flex gap-8">
+              <a href="#" className="hover:text-primary transition-colors">Mentions Légales</a>
+              <a href="#" className="hover:text-primary transition-colors">Confidentialité</a>
             </div>
           </div>
         </div>
