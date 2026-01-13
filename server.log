@@ -1,5 +1,1 @@
-
-> agence-web-premium@1.0.0 start /home/ubuntu/lumina-nexus-website
-> NODE_ENV=production node dist/index.js
-
 Server running on http://localhost:5000/

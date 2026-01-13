@@ -5,7 +5,7 @@ import {
   Search, ShieldCheck, Headphones, BarChart, Cpu, Globe, Layout,
   Lightbulb, Target, Award, Gem, Star, Handshake, TrendingUp
 } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 /**
  * Design Philosophy: Ultra-Premium Agency (Stripe/Apple/Linear style)
@@ -310,7 +310,7 @@ export default function Home() {
               <AnimatedText
                 el="h1"
                 text="Propulsez votre entreprise : Des écosystèmes digitaux conçus pour la croissance."
-                className="text-6xl lg:text-8xl font-black leading-[1] tracking-tight text-slate-900"
+                className="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900"
               />
 
               <AnimatedText
